@@ -1,11 +1,27 @@
+#Query -> equivalent get
 type Query {
     allCustomers:[Customer],
     customerById(id: Int) : Customer
 
 }
 
+
+#mutation -> equivalent save , update , delete
+type Mutation {
+    saveCustomer(customer:CustomerRequest): Customer
+}
+
+
+#type object c pour les response je peux pas l'utiliser pour la mutation mais que pour query
 type Customer {
     id : Int,
+    name : String,
+    email : String
+}
+
+
+# pour mutation
+input CustomerRequest {
     name : String,
     email : String
 }
