@@ -1,5 +1,6 @@
 type Query {
-    allCustomers:[Customer]
+    allCustomers:[Customer],
+    customerById(id: Int) : Customer
 
 }
 
