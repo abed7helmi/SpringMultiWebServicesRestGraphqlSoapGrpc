@@ -1,6 +1,8 @@
 package com.example.customerdataservice.web;
 
+import com.example.customerdataservice.dto.CustomerRequest;
 import com.example.customerdataservice.entities.Customer;
+import com.example.customerdataservice.mapper.CustomerMapper;
 import com.example.customerdataservice.repository.CustomerRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.graphql.data.method.annotation.Argument;
@@ -15,6 +17,8 @@ import java.util.List;
 public class CustomerGraphQLController {
 
     private CustomerRepository customerRepository;
+
+    private CustomerMapper customerMapper;
 
     @QueryMapping
     public List<Customer> allCustomers() {
@@ -33,7 +37,8 @@ public class CustomerGraphQLController {
     }
 
     @MutationMapping
-    public Customer saveCustomer(@Argument Customer customer) {
-        return customerRepository.save(customer);
+    public Customer saveCustomer(@Argument CustomerRequest customer) {
+        Customer c = customerMapper.from(customer);
+        return customerRepository.save(c);
     }
 }

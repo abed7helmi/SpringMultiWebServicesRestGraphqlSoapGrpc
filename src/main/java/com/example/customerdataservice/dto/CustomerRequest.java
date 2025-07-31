@@ -1,4 +1,10 @@
 package com.example.customerdataservice.dto;
 
-public record CustomerRequest() {
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+
+public record CustomerRequest(String name, String email) {
+
 }
