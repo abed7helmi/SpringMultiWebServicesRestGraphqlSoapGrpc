@@ -5,6 +5,10 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 
-public record CustomerRequest(String name, String email) {
+@Data @NoArgsConstructor @AllArgsConstructor
+public class CustomerRequest {
+
+    private String name;
+    private String email;
 
 }
