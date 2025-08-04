@@ -1,0 +1,30 @@
+syntax="proto3";
+//unury moldel
+
+
+service CustomerService {
+  rpc GetAllCustomers(GetAllCustomersRequest) returns (GetCustomerResponse);
+  rpc GetCustomerById(GetCustomerByIdRequest) returns (GetCustomerByIdResponse);
+}
+
+message GetAllCustomersRequest{}
+message GetCustomerResponse{
+  repeated Customer cusomers=1;
+//  repeated = list
+}
+
+
+//chaque champs a un code
+message Customer {
+  int64 id=1;
+  string name=2;
+  string email=3;
+}
+
+message GetCustomerByIdRequest {
+  int64 customerId=1;
+}
+
+message GetCustomerByIdResponse{
+  Customer customer=1;
+}

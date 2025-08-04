@@ -12,6 +12,8 @@ import org.springframework.stereotype.Component;
 
 import java.util.List;
 
+
+// class config pour soap
 @Component
 @AllArgsConstructor
 @WebService(serviceName = "CustomerWebService") // a partir java 9 c plus javax (  jakarta remplace javaX )
@@ -33,7 +35,7 @@ public class CustomerSoapService {
     }
 
     @WebMethod
-    public Customer saveCustomer(@WebParam CustomerRequest customer){
+    public Customer saveCustomer(@WebParam(name = "customer") CustomerRequest customer){
         return customerRepository.save(customerMapper.from(customer));
     }
 }
