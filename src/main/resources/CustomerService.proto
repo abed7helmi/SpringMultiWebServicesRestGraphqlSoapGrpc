@@ -1,14 +1,16 @@
 syntax="proto3";
+option java_package="com.example.customerdataservice.stub";
 //unury moldel
 
 
 service CustomerService {
-  rpc GetAllCustomers(GetAllCustomersRequest) returns (GetCustomerResponse);
-  rpc GetCustomerById(GetCustomerByIdRequest) returns (GetCustomerByIdResponse);
+  rpc getAllCustomers(GetAllCustomersRequest) returns (GetCustomersResponse);
+  rpc getCustomerById(GetCustomerByIdRequest) returns (GetCustomerByIdResponse);
+  rpc saveCustomer(SaveCustomerRequest) returns (SaveCustomerResponse);
 }
 
 message GetAllCustomersRequest{}
-message GetCustomerResponse{
+message GetCustomersResponse{
   repeated Customer cusomers=1;
 //  repeated = list
 }
@@ -27,4 +29,21 @@ message GetCustomerByIdRequest {
 
 message GetCustomerByIdResponse{
   Customer customer=1;
+}
+
+
+
+
+message CustomerRequest {
+
+  string name=1;
+  string email=2;
+}
+
+message SaveCustomerRequest{
+  CustomerRequest customer = 1 ;
+}
+
+message SaveCustomerResponse{
+  Customer customer = 1 ;
 }
