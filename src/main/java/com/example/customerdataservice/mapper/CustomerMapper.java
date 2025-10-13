@@ -21,7 +21,8 @@ public class CustomerMapper {
 
 
     public CustomerServiceOuterClass.Customer fromCustomer(Customer customer){
-        return modelMapper.map(customer, CustomerServiceOuterClass.Customer.class);
+        // on neccessite utiliser un builder
+        return modelMapper.map(customer, CustomerServiceOuterClass.Customer.Builder.class).build();
     }
 
     public Customer fromGrpcCustomerRequest(CustomerServiceOuterClass.CustomerRequest customerRequest){
